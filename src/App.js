@@ -1,10 +1,15 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 
 function App() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState(null);
+  const [totalWord, setTotalWord] = useState(0);
   // to format json
+  useEffect(() => {
+    setTotalWord(input.split("").length);
+  }, [totalWord, input]);
   const formatJSON = () => {
     try {
       const formatted = JSON.stringify(JSON.parse(input), null, 4);
@@ -31,14 +36,15 @@ function App() {
     setInput("");
     setOutput("");
   };
+
   return (
     <div className="h-[100vh] flex items-center flex-col justify-center bg-[#f2efef]">
-      <div className="flex items-center w-[90%] box-border">
+      <div className="flex  flex-col md:flex-row items-center w-[90%] box-border">
         {/* First Textarea. textarea style is  implemented from index.css file  */}
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          className="text-area"
+          className="text-area mb-2"
           name="input"
           id="input"
           placeholder="Enter JSON data"
@@ -62,6 +68,9 @@ function App() {
           >
             Clear
           </button>
+          <strong className="mb-2 text-center">
+            Total Character: <span>{totalWord}</span>
+          </strong>
         </div>
         {/* Second Textarea. textarea style is implemented from index.css file  */}
         <textarea

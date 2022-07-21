@@ -4,7 +4,7 @@
 
 @layer components {
   .text-area {
-    @apply border-2 border-black h-[500px] flex-[0.4] p-2 box-border rounded-lg focus:outline-none resize-none transition-all;
+    @apply border-2 border-black h-[34vh] md:h-[500px] md:flex-[0.4] p-2 box-border rounded-lg focus:outline-none resize-none transition-all;
   }
   .control-button {
     @apply px-4 py-2 mb-2 rounded-md outline-none cursor-pointer bg-[#009578] text-white font-bold hover:bg-[#00705a];
